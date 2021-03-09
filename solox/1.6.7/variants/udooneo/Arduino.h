@@ -20,11 +20,16 @@
 #ifndef Arduino_h
 #define Arduino_h
 
+#define F_CPU 200000000UL
+
+#include <math.h>
+#include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
-#include <math.h>
+// #include <sys/cdefs.h>
+
+#include "pins_arduino.h"
 
 // some libraries and sketches depend on this
 // AVR stuff, assuming Arduino.h or WProgram.h
@@ -35,7 +40,7 @@
 #include "itoa.h"
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif // __cplusplus
 
 #include "wiring_constants.h"
@@ -48,37 +53,35 @@ void user_task2(void);
 void user_task3(void);
 
 /* sketch */
-extern void setup( void ) ;
-extern void loop( void ) ;
+extern void setup(void);
+extern void loop(void);
 
 /* Define attribute */
-#if defined   ( __CC_ARM   ) /* Keil uVision 4 */
-    #define WEAK (__attribute__ ((weak)))
-#elif defined ( __ICCARM__ ) /* IAR Ewarm 5.41+ */
-    #define WEAK __weak
-#elif defined (  __GNUC__  ) /* GCC CS */
-    #define WEAK __attribute__ ((weak))
+#if defined(__CC_ARM) /* Keil uVision 4 */
+#define WEAK (__attribute__((weak)))
+#elif defined(__ICCARM__) /* IAR Ewarm 5.41+ */
+#define WEAK __weak
+#elif defined(__GNUC__) /* GCC CS */
+#define WEAK __attribute__((weak))
 #endif
 
 /* Definitions and types for pins */
-typedef enum _EAnalogChannel
-{
-	  NO_ADC=-1,
-	  A0=0,
-	  A1,
-	  A2,
-	  A3,
-	  A4,
-	  A5
-} EAnalogChannel ;
+typedef enum _EAnalogChannel {
+  NO_ADC = -1,
+  A0 = 0,
+  A1,
+  A2,
+  A3,
+  A4,
+  A5
+} EAnalogChannel;
 
 #define ADC_CHANNEL_NUMBER_NONE 0xffffffff
 
 // Definitions for PWM channels
-typedef enum _EPWMChannel
-{
-  NOT_ON_PWM=-1,
-  PWM_CH0=0,
+typedef enum _EPWMChannel {
+  NOT_ON_PWM = -1,
+  PWM_CH0 = 0,
   PWM_CH1,
   PWM_CH2,
   PWM_CH3,
@@ -87,17 +90,16 @@ typedef enum _EPWMChannel
   PWM_CH6,
   PWM_CH7,
   NMAX_PWMS
-} EPWMChannel ;
-
+} EPWMChannel;
 
 #ifdef __cplusplus
 } // extern "C"
 
-#include "WCharacter.h"
-#include "WString.h"
-#include "Tone.h"
-#include "WMath.h"
 #include "HardwareSerial.h"
+#include "Tone.h"
+#include "WCharacter.h"
+#include "WMath.h"
+#include "WString.h"
 #include "wiring_pulse.h"
 
 #endif // __cplusplus
@@ -105,11 +107,11 @@ typedef enum _EPWMChannel
 // Include board variant
 #include "variant.h"
 
-#include "wiring.h"
-#include "wiring_digital.h"
-#include "wiring_analog.h"
-#include "wiring_shift.h"
 #include "WInterrupts.h"
+#include "wiring.h"
+#include "wiring_analog.h"
+#include "wiring_digital.h"
+#include "wiring_shift.h"
 
 #include "uty_mqx.h"
 
@@ -123,9 +125,9 @@ typedef enum _EPWMChannel
 #define USB_PID_LEONARDO   0x0034
 #define USB_PID_MICRO      0x0035
 #define USB_PID_DUE        0x003E
-#include "USB/USBDesc.h"
-#include "USB/USBCore.h"
 #include "USB/USBAPI.h"
+#include "USB/USBCore.h"
+#include "USB/USBDesc.h"
 */
 
 #endif // Arduino_h

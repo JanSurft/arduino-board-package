@@ -1,3 +1,7 @@
+
+#ifndef Pins_Arduino_h
+#define Pins_Arduino_h
+
 /*
   Copyright (c) 2011 Arduino.  All right reserved.
 
@@ -19,3 +23,14 @@
 // API compatibility
 #include "variant.h"
 
+#define PIN_SPI_SS (10)
+#define PIN_SPI_MOSI (11)
+#define PIN_SPI_MISO (12)
+#define PIN_SPI_SCK (13)
+
+static const uint8_t SS = PIN_SPI_SS;
+static const uint8_t MOSI = PIN_SPI_MOSI;
+static const uint8_t MISO = PIN_SPI_MISO;
+static const uint8_t SCK = PIN_SPI_SCK;
+
+#endif

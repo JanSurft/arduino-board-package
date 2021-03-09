@@ -8,7 +8,7 @@
 
   This library is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   See the GNU Lesser General Public License for more details.
 
   You should have received a copy of the GNU Lesser General Public
@@ -23,19 +23,18 @@
 
 #include "Stream.h"
 
-class HardwareSerial : public Stream
-{
-  public:
-	//~
-    virtual void begin(unsigned long) = 0;	// fefr missing = 0
-    virtual void end() = 0;					// fefr missing = 0
-    virtual int available(void) = 0;
-    virtual int peek(void) = 0;
-    virtual int read(void) = 0;
-    virtual void flush(void) = 0;
-    virtual size_t write(uint8_t) = 0;
-    using Print::write; // pull in write(str) and write(buf, size) from Print
-    virtual operator bool() = 0;
+class HardwareSerial : public Stream {
+public:
+  //~
+  virtual void begin(unsigned long) = 0; // fefr missing = 0
+  virtual void end() = 0;                // fefr missing = 0
+  virtual int available(void) = 0;
+  virtual int peek(void) = 0;
+  virtual int read(void) = 0;
+  virtual void flush(void) = 0;
+  virtual size_t write(uint8_t) = 0;
+  using Print::write; // pull in write(str) and write(buf, size) from Print
+  virtual operator bool() = 0;
 };
 
 extern "C" void serialEventRun(void) __attribute__((weak));
